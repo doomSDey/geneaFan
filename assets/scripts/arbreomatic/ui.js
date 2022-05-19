@@ -258,7 +258,7 @@ function onSettingChange() {
 
     filename = (__('éventail généalogique de ') + (result.name || result.surname ? ' ' : '') + (result.name ? result.name : '') +
             (result.name && result.surname ? ' ' : '') + (result.surname ? result.surname : '') +
-            ' créé sur genealogie.es')
+            ' créé sur genealogi.es')
         .replace(/[|&;$%@"<>()+,]/g, ''); // Filename sanitizing (from: https://stackoverflow.com/a/3780731/4413709)
     shouldShowInitialMessage = false;
 
