@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="${locale}">
+
 <head>
     <meta charset="UTF-8">
     <title>Arbre-o-matic</title>
@@ -36,18 +37,21 @@
     <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
     <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
     <link rel="manifest" href="/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 </head>
+
 <body>
 
     <div id="overlay">
         <div id="loading">
             <i class="fas fa-spinner fa-pulse fa-5x fa-fw mb-4"></i>
-            <h2><%=__('common.loading_ellipsis')%></h2>
+            <h2>
+                <%=__('common.loading_ellipsis')%>
+            </h2>
             <em><%=__('common.please_wait')%></em>
         </div>
     </div>
@@ -62,7 +66,9 @@
             <i class="fa fa-globe" aria-hidden="true"></i>
         </button>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-            <h6 class="dropdown-header"><%=__('common.language')%></h6>
+            <h6 class="dropdown-header">
+                <%=__('common.language')%>
+            </h6>
             <a class="dropdown-item ${lang === 'fr' ? 'active' : ''}" href="${urlGeneratorLang('fr', 'arbreomatic')}">Français</a>
             <a class="dropdown-item ${lang === 'en' ? 'active' : ''}" href="${urlGeneratorLang('en', 'arbreomatic')}">English</a>
         </div>
@@ -72,7 +78,8 @@
         <!-- Header -->
         <div class="text-center">
             <svg id="logo" width="160" height="100"></svg>
-            <h1><%=__('arbreomatic.title')%><sup style="font-size: 10pt;vertical-align: baseline;position: relative;top: -1.0em;"><%=__('common.beta_capital')%></sup></h1>
+            <h1>
+                <%=__('arbreomatic.title')%><sup style="font-size: 10pt;vertical-align: baseline;position: relative;top: -1.0em;"><%=__('common.beta_capital')%></sup></h1>
             <em><%=__('arbreomatic.description')%></em>
         </div>
 
@@ -80,119 +87,107 @@
         <div class="contents">
             <div class="row">
                 <div class="col-4" id="toolbar">
-                    <h4><%=__('arbreomatic.gedcom_file')%></h4>
-
-                    <p><%=__('arbreomatic.privacy')%>
-                        <!--<i class="fa fa-question-circle fa-fw" aria-hidden="true" id="help" data-toggle="tooltip" data-placement="top" title="Aide"></i></p>-->
-
-                    <div class="modal fade" id="help-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title"><%=__('common.help')%></h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Fermer">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <h6><%=__('arbreomatic.special_characters.title')%></h6>
-                                    <%=__('arbreomatic.special_characters.text')%>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="file btn btn-lg btn-success file-button col-12">
-                        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-                        <%=__('arbreomatic.load_gedcom')%>
-                        <input type="file" name="file" id="file" accept=".ged,.gedcom" />
-                    </div>
-
-                    <div class="text-center">
-                        (<a href="#" id="sample-toggle"><%=__('arbreomatic.or_try_sample')%></a>)
-                    </div>
-
-                    <div class="modal fade" id="sample-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title"><%=__('arbreomatic.sample_files')%></h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="<%=__('common.close')%>">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <%=__('arbreomatic.choose_sample_below')%>
-                                    <ul>
-                                        <li><a href="#" class="sample" data-link="https://genealogyoflife.com/tng/gedcom/AmericanPresidents.ged"><%=__('arbreomatic.sample_files_list.american_presidents')%></a></li>
-                                        <li><a href="#" class="sample" data-link="https://genealogyoflife.com/tng/gedcom/Royal92.ged"><%=__('arbreomatic.sample_files_list.royal92')%></a></li>
-                                        <li><a href="#" class="sample" data-link="https://genealogyoflife.com/tng/gedcom/Shakespeare.ged"><%=__('arbreomatic.sample_files_list.shakespeare')%></a></li>
-                                        <li><a href="#" class="sample" data-link="https://genealogyoflife.com/tng/gedcom/bach.ged"><%=__('arbreomatic.sample_files_list.bach')%></a></li>
-                                    </ul>
-
-                                    <p><%=__('arbreomatic.great_thanks_to')%> <a href="http://famousfamilytrees.blogspot.com">Paul Pruitt</a>.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <hr>
-
-                    <h4><%=__('arbreomatic.root')%></h4>
+                    <h4>
+                        <%=__('arbreomatic.gedcom_file')%>
+                    </h4>
 
                     <p>
-                        <%=__('arbreomatic.choose_root')%>
-                    </p>
-                    <div class="row-fluid col-xs-12">
-                        <label style="width: 100%">
+                        <%=__('arbreomatic.privacy')%>
+                            <!--<i class="fa fa-question-circle fa-fw" aria-hidden="true" id="help" data-toggle="tooltip" data-placement="top" title="Aide"></i></p>-->
+
+                            <div class="modal fade" id="help-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">
+                                                <%=__('common.help')%>
+                                            </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Fermer">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h6>
+                                                <%=__('arbreomatic.special_characters.title')%>
+                                            </h6>
+                                            <%=__('arbreomatic.special_characters.text')%>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="file btn btn-lg btn-success file-button col-12">
+                                <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+                                <%=__('arbreomatic.load_gedcom')%>
+                                    <input type="file" name="file" id="file" accept=".ged,.gedcom" />
+                            </div>
+
+                            <hr>
+
+                            <h4>
+                                <%=__('arbreomatic.root')%>
+                            </h4>
+
+                            <p>
+                                <%=__('arbreomatic.choose_root')%>
+                            </p>
+                            <div class="row-fluid col-xs-12">
+                                <label style="width: 100%">
                             <select id="individual-select" class="col-xs-12" data-live-search="true" data-width="100%" disabled>
                             </select>
                         </label>
-                    </div>
+                            </div>
 
 
-                    <hr>
+                            <hr>
 
-                    <h4><%=__('common.export')%></h4>
-
-                    <p>
-                        <%=__('arbreomatic.print_or_download')%>
-                    </p>
-
-                    <p>
-                        <a class="btn btn-lg btn-primary col-12 disabled" id="print" href="#" role="button">
-                            <i class="fas fa-print fa-fw" aria-hidden="true"></i>
-                            <%=__('common.print_ellipsis')%>
-                        </a>
-                    </p>
-
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle col-12" type="button" id="download-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" disabled>
+                            <h4>
+                                <%=__('common.export')%>
+                            </h4>
+                            <!-- 
+                            <p>
+                                <%=__('arbreomatic.print_or_download')%>
+                            </p>
+                            -->
+                            <!-- 
+                            <p>
+                                <a class="btn btn-lg btn-primary col-12 disabled" id="print" href="#" role="button">
+                                    <i class="fas fa-print fa-fw" aria-hidden="true"></i>
+                                    <%=__('common.print_ellipsis')%>
+                                </a>
+                            </p>
+                            -->
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle col-12" type="button" id="download-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" disabled>
                             <i class="fas fa-download fa-fw" aria-hidden="true"></i>
                             <%=__('common.download')%>
                         </button>
-                        <div class="dropdown-menu col-12" aria-labelledby="download-menu">
-                            <h6 class="dropdown-header"><%=__('arbreomatic.vector_formats')%></h6>
-                            <a class="dropdown-item" id="download-pdf" href="#">
-                                <i class="far fa-file-pdf fa-fw fa-lg" aria-hidden="true"></i>
-                                <%=__('arbreomatic.file_type_list.pdf')%>
-                            </a>
-                            <a class="dropdown-item" id="download-svg" href="#">
-                                <i class="far fa-file-code fa-fw fa-lg" aria-hidden="true"></i>
-                                <%=__('arbreomatic.file_type_list.svg')%>
-                            </a>
-                            <h6 class="dropdown-header"><%=__('arbreomatic.raster_formats')%></h6>
-                            <a class="dropdown-item" id="download-png-transparency" href="#">
-                                <i class="far fa-file-image fa-fw fa-lg" aria-hidden="true"></i>
-                                <%=__('arbreomatic.file_type_list.png_transparent')%>
-                            </a>
-                            <a class="dropdown-item" id="download-png-background" href="#">
-                                <i class="far fa-file-image fa-fw fa-lg" aria-hidden="true"></i>
-                                <%=__('arbreomatic.file_type_list.png_white_background')%>
-                            </a>
-                        </div>
+                                <div class="dropdown-menu col-12" aria-labelledby="download-menu">
+                                    <h6 class="dropdown-header">
+                                        <%=__('arbreomatic.vector_formats')%>
+                                    </h6>
+                                    <a class="dropdown-item" id="download-pdf" href="#">
+                                        <i class="far fa-file-pdf fa-fw fa-lg" aria-hidden="true"></i>
+                                        <%=__('arbreomatic.file_type_list.pdf')%>
+                                    </a>
+                                    <a class="dropdown-item" id="download-svg" href="#">
+                                        <i class="far fa-file-code fa-fw fa-lg" aria-hidden="true"></i>
+                                        <%=__('arbreomatic.file_type_list.svg')%>
+                                    </a>
+                                    <h6 class="dropdown-header">
+                                        <%=__('arbreomatic.raster_formats')%>
+                                    </h6>
+                                    <a class="dropdown-item" id="download-png-transparency" href="#">
+                                        <i class="far fa-file-image fa-fw fa-lg" aria-hidden="true"></i>
+                                        <%=__('arbreomatic.file_type_list.png_transparent')%>
+                                    </a>
+                                    <a class="dropdown-item" id="download-png-background" href="#">
+                                        <i class="far fa-file-image fa-fw fa-lg" aria-hidden="true"></i>
+                                        <%=__('arbreomatic.file_type_list.png_white_background')%>
+                                    </a>
+                                </div>
 
-                    </div>
+                            </div>
 
 
 
@@ -200,7 +195,9 @@
                 <div class="col-8" id="preview">
 
                     <div id="initial-group">
-                        <h5><%=__('arbreomatic.click_to_load_ellipsis')%></h5>
+                        <h5>
+                            <%=__('arbreomatic.click_to_load_ellipsis')%>
+                        </h5>
                         <em>(<%=__('arbreomatic.or_drag_and_drop')%>)</em>
                     </div>
 
@@ -223,17 +220,19 @@
                     </div>
                 </div>
 
-                <div class="col-12" id="advanced">
+                <div hidden class="col-12" id="advanced">
 
                     <div class="row no-gutters">
                         <div class="col-6">
 
-                            <h5><%=__('arbreomatic.informations')%></h5>
+                            <h5>
+                                <%=__('arbreomatic.informations')%>
+                            </h5>
 
                             <div class="form-group row mb-3">
                                 <label for="max-generations" class="col-form-label col-8"><%=__('arbreomatic.generation_count')%></label>
                                 <div class="input-group col-4">
-                                    <input class="form-control parameter" type="number" id="max-generations" min="1" max="10" value="8" disabled>
+                                    <input class="form-control parameter" type="number" id="max-generations" min="1" max="10" value="7" disabled>
                                 </div>
                             </div>
 
@@ -270,7 +269,7 @@
                             <div class="form-group row mt-4 mb-3">
                                 <div class="col-12">
                                     <div class="form-check">
-                                        <input type="checkbox" class="form-check-input parameter" id="show-marriages" checked disabled>
+                                        <input type="checkbox" class="form-check-input parameter" id="show-marriages" unchecked disabled>
                                         <label class="form-check-label" for="show-marriages"><%=__('arbreomatic.display_marriages')%></label>
                                     </div>
                                 </div>
@@ -290,8 +289,8 @@
                                 <label class="form-check-label col-form-label col-6" for="select-name-display"><%=__('arbreomatic.names_to_display')%></label>
                                 <div class="input-group col-6">
                                     <select class="form-control parameter" id="select-name-display" disabled>
-                                        <option value="0" selected><%=__('arbreomatic.names_to_display_list.all')%></option>
-                                        <option value="1"><%=__('arbreomatic.names_to_display_list.first')%></option>
+                                        <option value="0"><%=__('arbreomatic.names_to_display_list.all')%></option>
+                                        <option value="1" selected><%=__('arbreomatic.names_to_display_list.first')%></option>
                                     </select>
                                 </div>
                             </div>
@@ -305,7 +304,9 @@
                                 </div>
                             </div>
 
-                            <h5><%=__('arbreomatic.recent_people')%></h5>
+                            <h5>
+                                <%=__('arbreomatic.recent_people')%>
+                            </h5>
 
                             <div class="form-group row my-2">
                                 <label class="form-check-label col-form-label col-6" for="select-hidden-generations"><%=__('arbreomatic.informations_to_hide')%></label>
@@ -326,7 +327,9 @@
                                 </div>
                             </div>
 
-                            <h5><%=__('arbreomatic.format')%></h5>
+                            <h5>
+                                <%=__('arbreomatic.format')%>
+                            </h5>
 
                             <div class="form-group row mt-3">
                                 <div class="col-12">
@@ -350,6 +353,7 @@
                                 </div>
                             </div>
 
+
                             <div class="form-group row mt-2">
                                 <div class="col-12">
                                     <div class="form-check">
@@ -362,7 +366,7 @@
                             <div class="form-group row mt-3">
                                 <div class="col-12">
                                     <div class="form-check">
-                                        <input type="checkbox" class="form-check-input parameter" id="invert-text-arc" disabled>
+                                        <input type="checkbox" class="form-check-input parameter" id="invert-text-arc" checked disabled>
                                         <label class="form-check-label" for="invert-text-arc"><%=__('arbreomatic.adapt_text_layout')%></label>
                                     </div>
                                 </div>
@@ -372,7 +376,9 @@
 
                         <div class="col-6">
 
-                            <h5><%=__('arbreomatic.annotations')%></h5>
+                            <h5>
+                                <%=__('arbreomatic.annotations')%>
+                            </h5>
 
                             <div class="form-group row mb-3">
                                 <label for="title" class="col-form-label col-6"><%=__('arbreomatic.primary_title')%></label>
@@ -381,8 +387,12 @@
                                 </div>
                             </div>
 
-                            <h5><%=__('arbreomatic.measurements')%></h5>
-                            <h6><%=__('arbreomatic.title_title')%></h6>
+                            <h5>
+                                <%=__('arbreomatic.measurements')%>
+                            </h5>
+                            <h6>
+                                <%=__('arbreomatic.title_title')%>
+                            </h6>
 
                             <div class="form-group row mb-2">
                                 <div class="form-group row mb-2">
@@ -400,7 +410,9 @@
                                 </div>
                             </div>
 
-                            <h6><%=__('arbreomatic.strokes')%></h6>
+                            <h6>
+                                <%=__('arbreomatic.strokes')%>
+                            </h6>
 
                             <div class="form-group row mb-2">
                                 <label for="stroke-weight" class="col-form-label col-6"><%=__('arbreomatic.stroke_weight')%></label>
@@ -410,7 +422,9 @@
                                 </div>
                             </div>
 
-                            <h6><%=__('arbreomatic.box_sizes')%></h6>
+                            <h6>
+                                <%=__('arbreomatic.box_sizes')%>
+                            </h6>
 
                             <div class="form-group row mb-2">
 
@@ -435,7 +449,9 @@
                                 </div>
                             </div>
 
-                            <h6><%=__('arbreomatic.raster_size')%></h6>
+                            <h6>
+                                <%=__('arbreomatic.raster_size')%>
+                            </h6>
 
                             <div class="form-group row mb-3">
                                 <label for="size-pixels" class="col-form-label col-8"><%=__('arbreomatic.width_pixels')%></label>
@@ -447,7 +463,9 @@
                                 </div>
                             </div>
 
-                            <h5><%=__('arbreomatic.colors')%></h5>
+                            <h5>
+                                <%=__('arbreomatic.colors')%>
+                            </h5>
 
                             <div class="form-group row mb-2">
                                 <label for="color-individuals" class="col-form-label col-7"><%=__('arbreomatic.individual_box')%></label>
@@ -455,7 +473,7 @@
                                     <input type="text" class="form-control" id="color-individuals" value="#ffffff" />
                                     <span class="input-group-append">
                                             <span class="input-group-text colorpicker-input-addon"><i></i></span>
-                                        </span>
+                                    </span>
                                 </div>
                             </div>
 
@@ -465,7 +483,7 @@
                                     <input type="text" class="form-control" id="color-marriages" value="#efefef" />
                                     <span class="input-group-append">
                                             <span class="input-group-text colorpicker-input-addon"><i></i></span>
-                                        </span>
+                                    </span>
                                 </div>
                             </div>
 
@@ -606,240 +624,7 @@
 
 
 
-        <footer class="page-footer pt-4">
-            <div class="container-fluid text-center text-md-left">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="row">
-                            <div style="width: 100%;">
-                                <h6><%=__('arbreomatic.newsletter')%></h6>
-                                <p><%=__('arbreomatic.get_informed')%></p>
 
-                                <!-- Begin Mailchimp Signup Form -->
-                                <div id="mc_embed_signup" class="mb-3" style="width: 100%;">
-                                    <form action="https://gmail.us4.list-manage.com/subscribe/post?u=ae91ffd8285e9c1c6e0d1fe01&amp;id=35246dbb9f" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                                        <div class="form-row align-items-center">
-                                            <div class="col-8">
-                                                <label class="sr-only" for="mce-EMAIL"><%=__('arbreomatic.email_address')%></label>
-                                                <input class="form-control mb-2" type="email" value="" name="EMAIL" id="mce-EMAIL" placeholder="${__('arbreomatic.example_email')}" style="width: 100%">
-                                            </div>
-                                            <div id="mce-responses" class="clear">
-                                                <div class="response" id="mce-error-response" style="display:none"></div>
-                                                <div class="response" id="mce-success-response" style="display:none"></div>
-                                            </div>
-                                            <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                                            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_ae91ffd8285e9c1c6e0d1fe01_35246dbb9f" tabindex="-1" value=""></div>
-                                            <div class="col-4">
-                                                <button type="submit" class="btn btn-primary mb-2" value="${__('arbreomatic.subscribe')}" name="subscribe" id="mc-embedded-subscribe" style="width: 100%"><%=__('arbreomatic.subscribe')%></button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                                <!--End mc_embed_signup-->
-
-                            </div>
-
-                            <div>
-                                <h6><%=__('common.contact')%></h6>
-                                <p><%=__('arbreomatic.for_any_suggestion')%> <a href="https://florian.cassayre.me/contact"><%=__('arbreomatic.a_contact_form_is_available')%></a>. <%=__('arbreomatic.feedback_is_appreciated')%></p>
-
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="row">
-                            <div>
-                                <h6><%=__('common.news')%></h6>
-
-                                <strong>30/12/2019</strong>
-                                <ul>
-                                    <li data-toggle="tooltip" data-placement="left" title="Merci à Claude">Les préfixes des noms n'étaient pas affichés</li>
-                                </ul>
-
-                                <div class="text-center">
-                                    <a href="#" id="news-button"><%=__('common.show_more_ellipsis')%></a>
-                                </div>
-
-
-                                <div class="modal fade" id="news-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title"><%=__('common.news')%></h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Fermer">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-
-                                                <strong>14/11/2019</strong>
-                                                <ul>
-                                                    <li>Possibilité d'affichage jusqu'à 10 générations</li>
-                                                </ul>
-
-                                                <strong>13/11/2019</strong>
-                                                <ul>
-                                                    <li>Paramètre de choix d'un titre</li>
-                                                    <li>Possibilité de modifier l'épaisseur des tracés</li>
-                                                </ul>
-
-                                                <strong>10/11/2019</strong>
-                                                <ul>
-                                                    <li>Option permettant d'inverser l'ordre des noms</li>
-                                                    <li data-toggle="tooltip" data-placement="left" title="Merci à Jean-Michel et Carine">Option d'affichage du premier prénom seulement</li>
-                                                    <li data-toggle="tooltip" data-placement="left" title="Merci à Carine">Option de substitution des événements</li>
-                                                </ul>
-
-                                                <strong>09/10/2019</strong>
-                                                <ul>
-                                                    <li>Résolution de certains problèmes d'encodage</li>
-                                                </ul>
-
-                                                <strong>01/10/2019</strong>
-                                                <ul>
-                                                    <li data-toggle="tooltip" data-placement="left" title="Merci à Daniel">
-                                                        Les cases vides étaient incorrectement coloriées
-                                                    </li>
-                                                </ul>
-
-                                                <strong>07/09/2019</strong>
-                                                <ul>
-                                                    <li>
-                                                        Plus de navigateurs sont désormais compatibles
-                                                    </li>
-                                                    <li>
-                                                        La navigation sur les appareils mobiles a été améliorée
-                                                    </li>
-                                                </ul>
-
-                                                <strong>02/09/2019</strong>
-                                                <ul>
-                                                    <li>
-                                                        Meilleure compatibilité du fichier SVG exporté
-                                                    </li>
-                                                    <li>
-                                                        Nouveaux filtres de coloriage : âge au mariage, profession, nombre d'enfants
-                                                    </li>
-                                                </ul>
-
-                                                <strong>01/09/2019</strong>
-                                                <ul>
-                                                    <li data-toggle="tooltip" data-placement="left" title="Merci à Hélène et Romain">
-                                                        Nouveau filtre de coloriage par signature
-                                                    </li>
-                                                    <li>
-                                                        Les fichiers ANSI sont désormais supportés
-                                                    </li>
-                                                    <li>
-                                                        Nouveau format de téléchargement : PNG
-                                                    </li>
-                                                </ul>
-
-                                                <strong>31/08/2019</strong>
-                                                <ul>
-                                                    <li>
-                                                        Performances nettement améliorées
-                                                    </li>
-                                                    <li>
-                                                        Option d'adaptation de l'orientation du texte
-                                                    </li>
-                                                </ul>
-
-                                                <strong>29/08/2019</strong>
-                                                <ul>
-                                                    <li>
-                                                        Nouveaux filtres de coloriage dynamique
-                                                    </li>
-                                                    <li>
-                                                        Possibilité de cacher le nom de l'individu central
-                                                    </li>
-                                                </ul>
-
-                                                <strong>28/08/2019</strong>
-                                                <ul>
-                                                    <li>
-                                                        Personnalisation des couleurs
-                                                    </li>
-                                                    <li>
-                                                        Coloriage dynamique (expérimental)
-                                                    </li>
-                                                </ul>
-
-                                                <strong>20/08/2019</strong>
-                                                <ul>
-                                                    <li>
-                                                        Ajout d'un mode de visualisation chronologique
-                                                    </li>
-                                                    <li>
-                                                        Gestion de l'affichage des contemporains
-                                                    </li>
-                                                </ul>
-
-                                                <strong>18/08/2019</strong>
-                                                <ul>
-                                                    <li>
-                                                        Les lieux sont mieux reconnus
-                                                    </li>
-                                                </ul>
-
-                                                <strong>17/08/2019</strong>
-                                                <ul>
-                                                    <li data-toggle="tooltip" data-placement="left" title="Merci à Anthony">
-                                                        Indication sur le format du fichier
-                                                    </li>
-                                                    <li data-toggle="tooltip" data-placement="left" title="Merci à Romain et Hélène">
-                                                        Support des dates républicaines
-                                                    </li>
-                                                    <li data-toggle="tooltip" data-placement="left" title="Merci à Hélène">
-                                                        Meilleure organisation des individus
-                                                    </li>
-                                                    <li>
-                                                        Les cases "mariage" ne débordent plus
-                                                    </li>
-                                                </ul>
-
-                                                <strong>16/08/2019</strong>
-                                                <ul>
-                                                    <li>
-                                                        Sortie de la version bêta
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <hr>
-
-            <div class="footer-copyright text-center py-1 font-italic">
-
-                <div>
-                    <%=__('arbreomatic.done_by')%> <a href="https://florian.cassayre.me">Florian Cassayre</a>
-                </div>
-                <div>
-                    <%=__('arbreomatic.inspired_by')%> <a href="https://geneanet.org">Geneanet</a>
-                </div>
-                <div>
-                    <%=__('arbreomatic.diagram_made_with')%> <a href="https://d3js.org/">d3.js</a> <%=__('common.and')%> <a href="https://github.com/tmcw/parse-gedcom">parse-gedcom</a><%=__('arbreomatic.printing_with')%> <a href="https://pdfkit.org/">PDFKit</a> <%=__('common.and')%> <a href="https://github.com/alafr/SVG-to-PDFKit">SVG-to-PDFKit</a><%=__('arbreomatic.interface_with')%> <a href="https://getbootstrap.com/">Bootstrap</a>, <a href="https://github.com/anvaka/panzoom">panzoom</a> <%=__('common.and')%> <a href="https://developer.snapappointments.com/bootstrap-select/">bootstrap-select</a>
-                </div>
-                <div>
-                    <%=__('arbreomatic.to_be_used_with')%>
-                </div>
-
-                <a href="https://github.com/FlorianCassayre/Arbre-o-matic" target="_blank" style="color: black">
-                    <i class="fab fa-github fa-2x mt-4" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="${__('arbreomatic.source_code_on')}"></i>
-                </a>
-
-            </div>
-        </footer>
     </div>
 
 
@@ -858,4 +643,5 @@
 
 
 </body>
+
 </html>
