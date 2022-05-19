@@ -41,7 +41,7 @@ drawLogo();
 // Select picker
 const individualSelect = $('#individual-select');
 individualSelect.selectpicker({
-    noneSelectedText : __('arbreomatic.no_individual_selected')
+    noneSelectedText: __('arbreomatic.no_individual_selected')
 });
 
 
@@ -56,7 +56,7 @@ function onFileChange(data) {
     json = Parse.toJson(data);
 
     $('.parameter, #individual-select, #download-menu').attr('disabled', false);
-    $('.colorpicker-group').each(function () {
+    $('.colorpicker-group').each(function() {
         $(this).data('colorpicker').enable()
     });
     $('#print').removeClass('disabled');
@@ -66,14 +66,14 @@ function onFileChange(data) {
     individualSelect.empty();
 
     Parse.getIndividualsList(json)
-        .map(function (o) {
+        .map(function(o) {
             const object = {
                 value: o.id,
                 text: o.surname + (o.surname ? ' ' : '') + o.name +
-                (o.birth.date && (o.birth.date.display || o.death.date && o.death.date.display) ?
-                    ' (' + (o.birth.date && o.birth.date.display ? o.birth.date.display : '?') + (o.death.date && o.death.date.display ? '-' + o.death.date.display : '') + ')' : '')
+                    (o.birth.date && (o.birth.date.display || o.death.date && o.death.date.display) ?
+                        ' (' + (o.birth.date && o.birth.date.display ? o.birth.date.display : '?') + (o.death.date && o.death.date.display ? '-' + o.death.date.display : '') + ')' : '')
             };
-            if(isFirst) {
+            if (isFirst) {
                 object['selected'] = 'selected';
                 isFirst = false;
             }
@@ -81,8 +81,9 @@ function onFileChange(data) {
         })
         .sort(function(a, b) {
             const rule = o => !o.text ? 'zzz' : o.text;
-            const x = rule(a), y = rule(b);
-            if(x < y) {
+            const x = rule(a),
+                y = rule(b);
+            if (x < y) {
                 return -1;
             } else if (x > y) {
                 return 1;
@@ -103,7 +104,7 @@ function onFileChange(data) {
 
     let first = true;
     map.on('transform', function(e) {
-        if(first) {
+        if (first) {
             first = false;
         } else {
             $('#tip').addClass('tip-hidden'); // User has already interacted with the preview, hint tooltip is not needed anymore
@@ -115,9 +116,11 @@ function onFileChange(data) {
 }
 
 function resetZoom() {
-    if(map != null) {
-        const previewContainer = $('#preview'), svg = $('#fan');
-        const previewRatio = previewContainer.height() / previewContainer.width(), svgRatio = svg.height() / svg.width();
+    if (map != null) {
+        const previewContainer = $('#preview'),
+            svg = $('#fan');
+        const previewRatio = previewContainer.height() / previewContainer.width(),
+            svgRatio = svg.height() / svg.width();
         let ratio;
         if (previewRatio > svgRatio) { // SVG is horizontally larger
             ratio = previewContainer.width() / svg.width();
@@ -133,34 +136,47 @@ function resetZoom() {
     }
 }
 
-const COLORING_NONE = 'none', COLORING_DUAL = 'dual', COLORING_GRADIENT = 'gradient', COLORING_TEXTUAL = 'textual';
+const COLORING_NONE = 'none',
+    COLORING_DUAL = 'dual',
+    COLORING_GRADIENT = 'gradient',
+    COLORING_TEXTUAL = 'textual';
 
 const coloringSchemes = {
-    none: {type: COLORING_NONE},
-    sex: {type: COLORING_DUAL, f: (d => d.sex), color1: '#e0f4ff', color2: '#ffe0eb'},
-    generation: {type: COLORING_GRADIENT, f: (d => d.generation), colorStart: '#FBC79F', colorEnd: '#CEFFCE'},
-    agedeath: {type: COLORING_GRADIENT, f: (d => {
-        if(!d.birth || !d.birth.date || !d.birth.date.year)
-            return null;
-        if(!d.death || !d.death.date || !d.death.date.year)
-            return null;
-        return d.death.date.year - d.birth.date.year;
-    }), colorStart: '#F9B4B4', colorEnd: '#BAFCFF'},
-    agemarriage: {type: COLORING_GRADIENT, f: (d => {
-        if(!d.birth || !d.birth.date || !d.birth.date.year)
-            return null;
-        const parent = d.parent();
-        if(parent == null || !parent.marriage || !parent.marriage.date || !parent.marriage.date.year)
-            return null;
-        return parent.marriage.date.year - d.birth.date.year;
-    }), colorStart: '#8EF389', colorEnd: '#D5B4F9'},
-    birthdate: {type: COLORING_GRADIENT, f: (d => d.birth && d.birth.date && d.birth.date.year ? d.birth.date.year : null), colorStart: '#565756', colorEnd: '#BAFCFF'},
-    birthtown: {type: COLORING_TEXTUAL, f: (d => d.birth && d.birth.place && d.birth.place.town ? d.birth.place.town : null)},
-    birthdepartement: {type: COLORING_TEXTUAL, f: (d => d.birth && d.birth.place && d.birth.place.departement ? d.birth.place.departement : null)},
-    patronym: {type: COLORING_TEXTUAL, f: (d => d.surname)},
-    signature: {type: COLORING_DUAL, f: (d => d.canSign), color1: '#83FBBC', color2: '#C8C8C8'},
-    occupation: {type: COLORING_TEXTUAL, f: (d => d.occupation)},
-    childrencount: {type: COLORING_GRADIENT, f: (d => d.childrenCount), colorStart: '#BAFCFF', colorEnd: '#F9B4B4'},
+    none: { type: COLORING_NONE },
+    sex: { type: COLORING_DUAL, f: (d => d.sex), color1: '#e0f4ff', color2: '#ffe0eb' },
+    generation: { type: COLORING_GRADIENT, f: (d => d.generation), colorStart: '#FBC79F', colorEnd: '#CEFFCE' },
+    agedeath: {
+        type: COLORING_GRADIENT,
+        f: (d => {
+            if (!d.birth || !d.birth.date || !d.birth.date.year)
+                return null;
+            if (!d.death || !d.death.date || !d.death.date.year)
+                return null;
+            return d.death.date.year - d.birth.date.year;
+        }),
+        colorStart: '#F9B4B4',
+        colorEnd: '#BAFCFF'
+    },
+    agemarriage: {
+        type: COLORING_GRADIENT,
+        f: (d => {
+            if (!d.birth || !d.birth.date || !d.birth.date.year)
+                return null;
+            const parent = d.parent();
+            if (parent == null || !parent.marriage || !parent.marriage.date || !parent.marriage.date.year)
+                return null;
+            return parent.marriage.date.year - d.birth.date.year;
+        }),
+        colorStart: '#8EF389',
+        colorEnd: '#D5B4F9'
+    },
+    birthdate: { type: COLORING_GRADIENT, f: (d => d.birth && d.birth.date && d.birth.date.year ? d.birth.date.year : null), colorStart: '#565756', colorEnd: '#BAFCFF' },
+    birthtown: { type: COLORING_TEXTUAL, f: (d => d.birth && d.birth.place && d.birth.place.town ? d.birth.place.town : null) },
+    birthdepartement: { type: COLORING_TEXTUAL, f: (d => d.birth && d.birth.place && d.birth.place.departement ? d.birth.place.departement : null) },
+    patronym: { type: COLORING_TEXTUAL, f: (d => d.surname) },
+    signature: { type: COLORING_DUAL, f: (d => d.canSign), color1: '#83FBBC', color2: '#C8C8C8' },
+    occupation: { type: COLORING_TEXTUAL, f: (d => d.occupation) },
+    childrencount: { type: COLORING_GRADIENT, f: (d => d.childrenCount), colorStart: '#BAFCFF', colorEnd: '#F9B4B4' },
 };
 
 function colorValue(id) {
@@ -177,7 +193,7 @@ function onSettingChange() {
 
     const coloring = $('#select-color-scheme').val();
     const coloringScheme = coloringSchemes[coloring];
-    if(previousColoring !== coloring) {
+    if (previousColoring !== coloring) {
         onColoringChange(coloringScheme); // Reset default colors, display menu according to scheme
     }
     previousColoring = coloring;
@@ -236,19 +252,19 @@ function onSettingChange() {
     };
 
     const result = Fan.draw(json, config);
-    if(!result) {
+    if (!result) {
         return false;
     }
 
-    filename = (__('arbreomatic.genealogy') + (result.name || result.surname ? ' ' : '') + (result.name ? result.name : '')
-        + (result.name && result.surname ? ' ' : '') + (result.surname ? result.surname : '')
-        + ' - Arbre-o-matic')
+    filename = (__('éventail généalogique de ') + (result.name || result.surname ? ' ' : '') + (result.name ? result.name : '') +
+            (result.name && result.surname ? ' ' : '') + (result.surname ? result.surname : '') +
+            ' créé sur genealogie.es')
         .replace(/[|&;$%@"<>()+,]/g, ''); // Filename sanitizing (from: https://stackoverflow.com/a/3780731/4413709)
     shouldShowInitialMessage = false;
 
     $('#initial-group').hide();
 
-    if(dimensions !== previousDimensions) {
+    if (dimensions !== previousDimensions) {
         previousDimensions = dimensions;
         resetZoom();
     }
@@ -259,19 +275,19 @@ function onSettingChange() {
 function onColoringChange(scheme) {
     $('.group-color').css('display', 'none'); // Hide all
     // Show only one
-    if(scheme == null)
+    if (scheme == null)
         return;
-    if(scheme.type === COLORING_DUAL) {
+    if (scheme.type === COLORING_DUAL) {
         $('#group-color-dual').css('display', '');
 
         $('#color1').parent().data('colorpicker').setValue(scheme.color1);
         $('#color2').parent().data('colorpicker').setValue(scheme.color2);
-    } else if(scheme.type === COLORING_GRADIENT) {
+    } else if (scheme.type === COLORING_GRADIENT) {
         $('#group-color-gradient').css('display', '');
 
         $('#color-start').parent().data('colorpicker').setValue(scheme.colorStart);
         $('#color-end').parent().data('colorpicker').setValue(scheme.colorEnd);
-    } else if(scheme.type === COLORING_TEXTUAL) {
+    } else if (scheme.type === COLORING_TEXTUAL) {
         $('#group-color-textual').css('display', '');
     }
 }
@@ -280,7 +296,7 @@ function loadFile(files) {
     const file = files[0];
     const reader = new FileReader();
 
-    reader.addEventListener("loadend", function () {
+    reader.addEventListener("loadend", function() {
         const data = reader.result;
 
         onFileChange(data);
@@ -289,11 +305,11 @@ function loadFile(files) {
     reader.readAsArrayBuffer(file);
 }
 
-$("#file").change(function (e) {
+$("#file").change(function(e) {
     loadFile(e.target.files);
 });
 
-individualSelect.on('change', function () {
+individualSelect.on('change', function() {
     onSettingChange();
 });
 
@@ -301,8 +317,10 @@ function zoom(scale) {
     if (map != null) {
         const previewContainer = $('#preview');
         const transform = map.getTransform();
-        const deltaX = transform.x, deltaY = transform.y;
-        const offsetX = 1 / scale * previewContainer.width() / 2 + deltaX, offsetY = 1 / scale * previewContainer.height() / 2 + deltaY;
+        const deltaX = transform.x,
+            deltaY = transform.y;
+        const offsetX = 1 / scale * previewContainer.width() / 2 + deltaX,
+            offsetY = 1 / scale * previewContainer.height() / 2 + deltaY;
 
         map.zoomTo(previewContainer.width() / 2, previewContainer.height() / 2, scale);
     }
@@ -310,44 +328,45 @@ function zoom(scale) {
 
 const zoomFactor = 0.2;
 
-$("#zoom-plus").click(function () {
+$("#zoom-plus").click(function() {
     zoom(1 + zoomFactor);
     return false;
 });
 
-$("#zoom-minus").click(function () {
+$("#zoom-minus").click(function() {
     zoom(1 - zoomFactor);
     return false;
 });
 
-$("#zoom-reset").click(function () {
+$("#zoom-reset").click(function() {
     resetZoom();
     return false;
 });
 
 const zoomButtons = $(".button-zoom");
 
-zoomButtons.mousedown(function () {
+zoomButtons.mousedown(function() {
     return false;
 });
 
-zoomButtons.dblclick(function () {
+zoomButtons.dblclick(function() {
     return false;
 });
 
 // --
 
 function downloadContent(data, filename, type) {
-    const file = new Blob([data], {type: type});
+    const file = new Blob([data], { type: type });
     if (window.navigator.msSaveOrOpenBlob) // IE10+
         window.navigator.msSaveOrOpenBlob(file, filename);
     else { // Others
-        const a = document.createElement("a"), url = URL.createObjectURL(file);
+        const a = document.createElement("a"),
+            url = URL.createObjectURL(file);
         a.href = url;
         a.download = filename;
         document.body.appendChild(a);
         a.click();
-        setTimeout(function () {
+        setTimeout(function() {
             document.body.removeChild(a);
             window.URL.revokeObjectURL(url);
         }, 0);
@@ -375,7 +394,7 @@ function fanAsXml() {
 function generatePdf(callback) {
     const doc = new PDFDocument({
         size: [595.28, 841.89],
-        margins : {
+        margins: {
             top: 28,
             bottom: 28,
             left: 28,
@@ -384,9 +403,9 @@ function generatePdf(callback) {
         layout: 'landscape', // Either 'portrait' or 'landscape'
         info: {
             Title: filename, // Title of the document
-            Author: 'Arbre-o-matic', // Name of the author
+            Author: 'https://genealogi.es', // Name of the author
             Subject: __('arbreomatic.genealogical_fan'), // Subject of the document
-            Keywords: 'généalogie;arbre;éventail;arbre-o-matic', // Keywords (no translation)
+            Keywords: 'généalogie;arbre;éventail;genealogi.es', // Keywords (no translation)
             //CreationDate: 'DD/MM/YYYY', // Date created (added automatically by PDFKit)
             //ModDate: 'DD/MM/YYYY' // Date last modified
         }
@@ -398,7 +417,7 @@ function generatePdf(callback) {
         callback(blob);
     });
 
-    SVGtoPDF(doc, fanAsXml().trim(), 0, 0, {preserveAspectRatio: 'xMidYMid meet', fontCallback: ((family, isBold, isItalic, options) => 'Helvetica' + (isBold ? '-Bold' : ''))});
+    SVGtoPDF(doc, fanAsXml().trim(), 0, 0, { preserveAspectRatio: 'xMidYMid meet', fontCallback: ((family, isBold, isItalic, options) => 'Helvetica' + (isBold ? '-Bold' : '')) });
 
     doc.end();
 }
@@ -407,25 +426,25 @@ function generateFileName(extension) {
     return filename + '.' + extension;
 }
 
-$("#download-pdf").click(function () {
-    generatePdf(function (blob) {
+$("#download-pdf").click(function() {
+    generatePdf(function(blob) {
         downloadContent(blob, generateFileName("pdf"), "pdf");
     });
 
     return false; // Prevent default link action
 });
 
-$("#download-svg").click(function () {
+$("#download-svg").click(function() {
     downloadContent(fanAsXml(), generateFileName("svg"), "svg");
     return false;
 });
 
-$("#download-png-transparency").click(function () {
+$("#download-png-transparency").click(function() {
     downloadPNG(true);
     return false;
 });
 
-$("#download-png-background").click(function () {
+$("#download-png-background").click(function() {
     downloadPNG(false);
     return false;
 });
@@ -439,14 +458,14 @@ function downloadPNG(transparency) {
     canvas.height = parseInt(fan.height());
     const ctx = canvas.getContext("2d");
 
-    if(!transparency) { // No transparency
+    if (!transparency) { // No transparency
         ctx.fillStyle = "white";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
 
     const DOMURL = self.URL || self.webkitURL || self;
     const img = new Image();
-    const svg = new Blob([svgString], {type: "image/svg+xml;charset=utf-8"});
+    const svg = new Blob([svgString], { type: "image/svg+xml;charset=utf-8" });
     const url = DOMURL.createObjectURL(svg);
 
     img.onload = function() {
@@ -465,7 +484,7 @@ function downloadPNG(transparency) {
     img.src = url;
 }
 
-$("#print").click(function () {
+$("#print").click(function() {
     function printPdf(url) {
         const iframe = document.createElement('iframe');
         iframe.className = 'pdfIframe';
@@ -473,8 +492,8 @@ $("#print").click(function () {
         iframe.style.position = 'absolute';
         iframe.style.left = '-10000px';
         iframe.style.top = '-10000px';
-        iframe.onload = function () {
-            setTimeout(function () {
+        iframe.onload = function() {
+            setTimeout(function() {
                 iframe.focus();
                 try {
                     iframe.contentWindow.print();
@@ -513,26 +532,26 @@ function loadExternal(url) {
 }
 
 $('#preview').on("click", function() {
-    if(shouldShowInitialMessage) {
+    if (shouldShowInitialMessage) {
         $('#file').click();
     }
 }).on('drop', function(e) {
     $('#preview').removeClass('preview-drop');
-    if(e.originalEvent.dataTransfer && e.originalEvent.dataTransfer.files.length > 0) {
+    if (e.originalEvent.dataTransfer && e.originalEvent.dataTransfer.files.length > 0) {
         e.preventDefault();
         e.stopPropagation();
 
         loadFile(e.originalEvent.dataTransfer.files);
     }
     return false;
-}).on('dragover',function(e){
+}).on('dragover', function(e) {
     e.preventDefault();
     e.stopPropagation();
     return false;
 }).on('dragenter', function(e) {
     e.preventDefault();
     e.stopPropagation();
-    if(shouldShowInitialMessage) {
+    if (shouldShowInitialMessage) {
         $('#preview').addClass('preview-drop');
     }
     return false;
@@ -542,47 +561,47 @@ $('#preview').on("click", function() {
 });
 
 
-$('#sample-toggle').click(function () {
+$('#sample-toggle').click(function() {
     $('#sample-modal').modal('show');
     //loadExternal('shakespeare.ged');
     return false;
 });
 
-$('.sample').click(function (e) {
+$('.sample').click(function(e) {
     loadExternal('https://cors-anywhere.herokuapp.com/' + $(e.target).attr('data-link'));
     $('#sample-modal').modal('hide');
     return false;
 });
 
-$('#help').click(function (e) {
+$('#help').click(function(e) {
     $('#help-modal').modal('show');
     return false;
 });
 
-$('#news-button').click(function (e) {
+$('#news-button').click(function(e) {
     $('#news-modal').modal('show');
     return false;
 });
 
 // Prevent the user from entering invalid quantities
-$('input[type=number]').change(function () {
+$('input[type=number]').change(function() {
     const _this = $(this);
     const min = parseInt(_this.attr('min'));
     const max = parseInt(_this.attr('max'));
     const val = parseInt(_this.val()) || (min - 1);
-    if(val < min)
-        _this.val( min );
-    if(val > max)
-        _this.val( max );
+    if (val < min)
+        _this.val(min);
+    if (val > max)
+        _this.val(max);
 });
 
-$('.gradient-group').on('colorpickerChange colorpickerCreate', function (e) {
+$('.gradient-group').on('colorpickerChange colorpickerCreate', function(e) {
     const preview = $('#gradient-preview');
-    preview.css('background', 'linear-gradient(to right, ' + colorValue('#color-start') +', ' + colorValue('#color-end') + ')');
+    preview.css('background', 'linear-gradient(to right, ' + colorValue('#color-start') + ', ' + colorValue('#color-end') + ')');
 });
 
 // TODO move this to another file
-$(function () {
+$(function() {
     $('[data-toggle="tooltip"]').tooltip(); // Bootstrap tooltips
     $('.colorpicker-group')
         .colorpicker({ // Color picker plugin
@@ -591,12 +610,12 @@ $(function () {
             placement: 'top',
             fallbackColor: '#ffffff'
         })
-        .on('colorpickerHide', function () {
-            if(json != null) {
+        .on('colorpickerHide', function() {
+            if (json != null) {
                 onSettingChange();
             }
         })
-        .each(function () {
+        .each(function() {
             $(this).data('colorpicker').disable()
         });
 
@@ -608,8 +627,8 @@ $(function () {
 
 $(document).ready(function() {
     // ARE YOU READY?
-    if(isReady) {
-        $('#overlay').addClass('overlay-hidden');//.css('display', 'none');
+    if (isReady) {
+        $('#overlay').addClass('overlay-hidden'); //.css('display', 'none');
         $('body').css('overflow', 'auto'); // Enable scrolling
     }
 });

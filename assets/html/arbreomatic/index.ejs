@@ -118,7 +118,7 @@
                             </div>
 
                             <div class="file btn btn-lg btn-success file-button col-12">
-                                <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+                                <i class="" aria-hidden="true"></i>
                                 <%=__('arbreomatic.load_gedcom')%>
                                     <input type="file" name="file" id="file" accept=".ged,.gedcom" />
                             </div>
@@ -160,13 +160,15 @@
                             -->
                             <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle col-12" type="button" id="download-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" disabled>
-                            <i class="fas fa-download fa-fw" aria-hidden="true"></i>
+                            <i class="" aria-hidden="true"></i>
                             <%=__('common.download')%>
                         </button>
                                 <div class="dropdown-menu col-12" aria-labelledby="download-menu">
+                                    <!-- 
                                     <h6 class="dropdown-header">
                                         <%=__('arbreomatic.vector_formats')%>
                                     </h6>
+                                    -->
                                     <a class="dropdown-item" id="download-pdf" href="#">
                                         <i class="far fa-file-pdf fa-fw fa-lg" aria-hidden="true"></i>
                                         <%=__('arbreomatic.file_type_list.pdf')%>
@@ -175,9 +177,11 @@
                                         <i class="far fa-file-code fa-fw fa-lg" aria-hidden="true"></i>
                                         <%=__('arbreomatic.file_type_list.svg')%>
                                     </a>
+                                    <!-- 
                                     <h6 class="dropdown-header">
                                         <%=__('arbreomatic.raster_formats')%>
                                     </h6>
+                                    -->
                                     <a class="dropdown-item" id="download-png-transparency" href="#">
                                         <i class="far fa-file-image fa-fw fa-lg" aria-hidden="true"></i>
                                         <%=__('arbreomatic.file_type_list.png_transparent')%>
@@ -384,7 +388,7 @@
                             <div class="form-group row mb-3">
                                 <label for="title" class="col-form-label col-6"><%=__('arbreomatic.primary_title')%></label>
                                 <div class="input-group col-6">
-                                    <input class="form-control parameter" type="text" id="title" placeholder="${__('common.none')}" disabled>
+                                    <input class="form-control parameter" type="text" id="title" value="Commandez cet éventail sur genealogi.es" placeholder="${__('common.none')}" disabled>
                                 </div>
                             </div>
 
