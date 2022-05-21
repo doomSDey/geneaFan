@@ -56,6 +56,16 @@ input#file {
     top: 0;
 }
 
+.btn {
+    color: var(--color-light);
+    background-color: var(--color-dark);
+}
+
+.btn:hover {
+    color: var(--color-dark);
+    background-color: var(--color-light);
+}
+
 div.file-button {
     position: relative;
     overflow: hidden;
