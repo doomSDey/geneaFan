@@ -47,7 +47,7 @@
             "title": "Certains caractères ne s'affichent pas correctement ?",
             "text": "Vérifier lors de l'exportation depuis votre logiciel ou plateforme que l'encodage du fichier Gedcom est bien paramétré sur <strong>UTF-8</strong>. Cet outil <em>ne supporte pas</em> l'ASCII étendu."
         },
-        "load_gedcom": "Charger un fichier Gedcom",
+        "load_gedcom": "Chargez votre fichier Gedcom",
         "or_try_sample": "ou bien essayez avec un fichier échantillon",
         "sample_files": "Fichiers Gedcom échantillon",
         "choose_sample_below": "Si vous ne possédez pas de fichier Gedcom ou bien que vous souhaitez tester le service, il est possible d'en charger un parmi la liste suivante&#8239;:",

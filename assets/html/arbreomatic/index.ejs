@@ -94,7 +94,7 @@
 
         <!-- Working area -->
         <div class="contents">
-            <div class="row h-100">
+            <div class="row">
                 <div class="col-4" id="toolbar">
                     <h4>
                         <%=__('arbreomatic.gedcom_file')%>
@@ -125,7 +125,7 @@
                                 </div>
                             </div>
 
-                            <div class="file btn btn-lg btn-success file-button col-12">
+                            <div class="file btn btn-lg btn-success file-button col-8">
                                 <i class="" aria-hidden="true"></i>
                                 <%=__('arbreomatic.load_gedcom')%>
                                     <input type="file" name="file" id="file" accept=".ged,.gedcom" />
@@ -140,9 +140,9 @@
                             <p>
                                 <%=__('arbreomatic.choose_root')%>
                             </p>
-                            <div class="row-fluid col-xs-12">
+                            <div class="row-fluid col-xs-8">
                                 <label style="width: 100%">
-                            <select id="individual-select" class="col-xs-12" data-live-search="true" data-width="100%" disabled>
+                            <select id="individual-select" class="col-xs-8" data-live-search="true" data-width="100%" disabled>
                             </select>
                         </label>
                             </div>
@@ -167,11 +167,11 @@
                             </p>
                             -->
                             <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle col-12" type="button" id="download-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" disabled>
+                                <button class="btn btn-secondary dropdown-toggle col-8" type="button" id="download-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" disabled>
                             <i class="" aria-hidden="true"></i>
                             <%=__('common.download')%>
                         </button>
-                                <div class="dropdown-menu col-12" aria-labelledby="download-menu">
+                                <div class="dropdown-menu col-xs-8" aria-labelledby="download-menu">
                                     <!-- 
                                     <h6 class="dropdown-header">
                                         <%=__('arbreomatic.vector_formats')%>
