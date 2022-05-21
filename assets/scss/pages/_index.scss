@@ -10,7 +10,7 @@ body {
 div.container {
     margin-top: 20px;
     margin-bottom: 20px;
-    min-width: 962px;
+    min-width: 80vw;
 }
 
 div.contents {
@@ -35,7 +35,8 @@ div#preview {
     overflow: hidden;
     padding: 0;
     outline: none;
-    cursor: crosshair;
+    cursor: grab;
+    min-height: 70vh;
 }
 
 div#advanced {

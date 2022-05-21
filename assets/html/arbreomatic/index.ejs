@@ -60,7 +60,7 @@
         <i class="fas fa-long-arrow-alt-left"></i>
         <%=__('common.other_services')%>
     </a>
-
+    -->
     <div class="dropdown" style="position: absolute; top: 10px; right: 10px;">
         <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-globe" aria-hidden="true"></i>
@@ -70,15 +70,23 @@
                 <%=__('common.language')%>
             </h6>
             <a class="dropdown-item ${lang === 'fr' ? 'active' : ''}" href="${urlGeneratorLang('fr', 'arbreomatic')}">Français</a>
-            <a class="dropdown-item ${lang === 'en' ? 'active' : ''}" href="${urlGeneratorLang('en', 'arbreomatic')}">English</a>
+            <a class="dropdown-item ${lang === 'en' ? 'active' : ''}" href="('en', 'arbreomatic')}">English</a>
         </div>
     </div>
-    -->
+
 
     <div class="container">
         <!-- Header         -->
-        <div class="text-center">
-            <svg id="logo" width="160" height="100"></svg>
+        <div class="col-12" id="genealogies">
+            <div class="text-center">
+                <img src="https://images.squarespace-cdn.com/content/v1/61d847565e8825750f6808c1/fbd726eb-a098-4240-9b48-f331bce3dcca/logo_violet.png?format=1500w" alt="logo genealogi.es" width="300">
+                <h1>
+                    <%=__('arbreomatic.description')%>
+                </h1>
+            </div>
+        </div>
+        <div hidden class="text-center">
+            <svg id="logo" width="200" height="150"></svg>
             <h1>
                 <%=__('arbreomatic.title')%><sup style="font-size: 10pt;vertical-align: baseline;position: relative;top: -1.0em;"></sup></h1>
             <em><%=__('arbreomatic.description')%></em>
@@ -86,7 +94,7 @@
 
         <!-- Working area -->
         <div class="contents">
-            <div class="row">
+            <div class="row h-100">
                 <div class="col-4" id="toolbar">
                     <h4>
                         <%=__('arbreomatic.gedcom_file')%>
