@@ -1,7 +1,8 @@
 body {
     --color-dark: #32273b;
     --color-light: #c8a47e;
-    background-color: var(--color-light) !important;
+    background-color: var(--color-light);
+    color: var(--color-light);
     overflow: hidden;
     /* Default action */
     min-width: 992px;
@@ -10,7 +11,7 @@ body {
 div.container {
     margin-top: 20px;
     margin-bottom: 20px;
-    min-width: 80vw;
+    min-width: 90vw;
 }
 
 div.contents {
@@ -26,7 +27,7 @@ svg#logo {
 }
 
 div#toolbar {
-    background-color: #f1f1f1;
+    background-color: var(--color-dark);
     padding: 15px;
     border-right: 1px solid rgba(0, 0, 0, .125);
 }
@@ -37,6 +38,10 @@ div#preview {
     outline: none;
     cursor: grab;
     min-height: 70vh;
+}
+
+div#genealogies {
+    color: var(--color-dark);
 }
 
 div#advanced {
@@ -51,7 +56,7 @@ div.row {
 
 input#file {
     position: absolute;
-    font-size: calc(10px + 2vmin); //50px;
+    font-size: calc(10px + 1.8vmin); //50px;
     opacity: 0;
     right: 0;
     top: 0;

@@ -8,9 +8,9 @@
         "beta_capital": "BÊTA",
         "help": "Aide",
         "close": "Fermer",
-        "export": "Exporter",
+        "export": "3. Enregistrement de l'éventail",
         "print_ellipsis": "Imprimer...",
-        "download": "Télécharger",
+        "download": "Choisissez un format d'export",
         "none": "Aucun",
         "contact": "Contact",
         "news": "Nouveautés",
@@ -41,13 +41,13 @@
     "arbreomatic": {
         "title": "Genealogies",
         "description": "Générateur d'éventail généalogique",
-        "gedcom_file": "Fichier Gedcom",
+        "gedcom_file": "1. Données <em>GEDCOM</em>",
         "privacy": "Aucune donnée n'est transmise au serveur&#8239;: tout se passe dans votre navigateur",
         "special_characters": {
             "title": "Certains caractères ne s'affichent pas correctement ?",
             "text": "Vérifier lors de l'exportation depuis votre logiciel ou plateforme que l'encodage du fichier Gedcom est bien paramétré sur <strong>UTF-8</strong>. Cet outil <em>ne supporte pas</em> l'ASCII étendu."
         },
-        "load_gedcom": "Chargez votre fichier Gedcom",
+        "load_gedcom": "Choisissez un fichier .ged",
         "or_try_sample": "ou bien essayez avec un fichier échantillon",
         "sample_files": "Fichiers Gedcom échantillon",
         "choose_sample_below": "Si vous ne possédez pas de fichier Gedcom ou bien que vous souhaitez tester le service, il est possible d'en charger un parmi la liste suivante&#8239;:",
@@ -58,8 +58,8 @@
             "bach": "Famille Bach"
         },
         "great_thanks_to": "Un grand merci à",
-        "root": "Souche",
-        "choose_root": "Choisissez la personne au centre de l'éventail",
+        "root": "2. Personnalisation de l'éventail",
+        "choose_root": "Choisissez la personne devant figurer au centre de l'éventail",
         "print_or_download": "Possibilité d'imprimer votre arbre ou d'en télécharger une copie dans le format souhaité",
         "vector_formats": "Formats vectoriels",
         "raster_formats": "Formats matriciels",
