@@ -8,7 +8,7 @@
         "beta_capital": "BÊTA",
         "help": "Aide",
         "close": "Fermer",
-        "export": "3. Enregistrement de l'éventail",
+        "export": "3. Enregistrez votre éventail",
         "print_ellipsis": "Imprimer...",
         "download": "Choisissez un format d'export",
         "none": "Aucun",
@@ -41,7 +41,7 @@
     "arbreomatic": {
         "title": "Genealogies",
         "description": "Générateur d'éventail généalogique",
-        "gedcom_file": "1. Données <em>GEDCOM</em>",
+        "gedcom_file": "1. Chargez votre fichier <em>GEDCOM</em>",
         "privacy": "Aucune donnée n'est transmise au serveur&#8239;: tout se passe dans votre navigateur",
         "special_characters": {
             "title": "Certains caractères ne s'affichent pas correctement ?",
@@ -58,8 +58,9 @@
             "bach": "Famille Bach"
         },
         "great_thanks_to": "Un grand merci à",
-        "root": "2. Personnalisation de l'éventail",
-        "choose_root": "Choisissez la personne devant figurer au centre de l'éventail",
+        "root": "2. Personnalisez votre éventail",
+        "choose_root": "Choisissez la personne au centre de l'éventail",
+        "formats": "Formats disponibles : PDF, SVG, PNG",
         "print_or_download": "Possibilité d'imprimer votre arbre ou d'en télécharger une copie dans le format souhaité",
         "vector_formats": "Formats vectoriels",
         "raster_formats": "Formats matriciels",

@@ -27,17 +27,20 @@ svg#logo {
 }
 
 div#toolbar {
+    flex-direction: column;
     background-color: var(--color-dark);
     padding: 15px;
     border-right: 1px solid rgba(0, 0, 0, .125);
 }
 
 div#preview {
+    background-color: white;
     overflow: hidden;
     padding: 0;
     outline: none;
     cursor: grab;
-    min-height: 80vh;
+    min-height: 70vh;
+    min-width: 70vw;
 }
 
 div#genealogies {
