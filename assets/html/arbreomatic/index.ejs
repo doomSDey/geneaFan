@@ -206,7 +206,7 @@
                 <button type="button" class="btn btn-light button-zoom" id="zoom-minus" title="${__('arbreomatic.zoom_out')}">
                             <i class="fas fa-minus" aria-hidden="true"></i>
                         </button>
-                <button type="button" onclick="fullscreen_function()" class="btn btn-light button-zoom" id="full-screen-toggle" title="${__('arbreomatic.full_screentoggle')}">
+                <button type="button" onclick="fullscreen_function()" class="btn btn-light button-zoom" id="full-screen-toggle" title="${__('arbreomatic.full_screen_toggle')}">
                             <i class="fas fa-arrows-alt" aria-hidden="true"></i>
                         </button>
 
@@ -632,40 +632,6 @@
             var e = document.getElementById('loading');
             e.innerHTML = "<h2><i class=\"fas fa-exclamation-triangle\" aria-hidden=\"true\"></i> ${__('arbreomatic.an_error_occurred')}</h2>${__('arbreomatic.your_browser_is_incompatible')}";
             return false;
-        };
-
-        function fullscreen_function(){
-            // if already full screen; exit
-            // else go fullscreen
-            console.log('avs')
-
-            if (
-                document.fullscreenElement ||
-                document.webkitFullscreenElement ||
-                document.mozFullScreenElement ||
-                document.msFullscreenElement
-            ) {
-                if (document.exitFullscreen) {
-                document.exitFullscreen();
-                } else if (document.mozCancelFullScreen) {
-                document.mozCancelFullScreen();
-                } else if (document.webkitExitFullscreen) {
-                document.webkitExitFullscreen();
-                } else if (document.msExitFullscreen) {
-                document.msExitFullscreen();
-                }
-            } else {
-                element = $('#preview').get(0);
-                if (element.requestFullscreen) {
-                element.requestFullscreen();
-                } else if (element.mozRequestFullScreen) {
-                element.mozRequestFullScreen();
-                } else if (element.webkitRequestFullscreen) {
-                element.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
-                } else if (element.msRequestFullscreen) {
-                element.msRequestFullscreen();
-                }
-            }
         };
     </script>
 
