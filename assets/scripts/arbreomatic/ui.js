@@ -670,5 +670,19 @@ $(document).ready(function() {
     }
 });
 
+//reset zoom level when the document goes into fullscreen
+document.addEventListener("fullscreenchange", function () {
+    resetZoom();
+}, false);
+document.addEventListener("mozfullscreenchange", function () {
+    resetZoom();
+}, false);
+document.addEventListener("webkitfullscreenchange", function () {
+    resetZoom();
+}, false);
+document.addEventListener("msfullscreenchange", function () {
+   resetZoom();
+}, false);
+
 // TODO remove (debug)
 //loadExternal('test.ged');
